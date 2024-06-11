@@ -8,7 +8,6 @@ export interface User {
   login: string;
   htmlUrl: string;
   reposUrl: string;
-  reposList?: UserRepo[];
 }
 
 export interface ApiUserRepo {

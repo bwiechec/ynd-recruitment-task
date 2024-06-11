@@ -9,8 +9,6 @@ interface UserListProps {
 export const UserList = ({ isLoading }: UserListProps) => {
   const users = useUserList();
 
-  console.log(isLoading);
-
   if (isLoading) {
     return (
       <Box>

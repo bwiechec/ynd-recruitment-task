@@ -1,8 +1,8 @@
 import { useQuery } from "react-query";
-import { ApiUser, ApiUserRepo, User } from "../utils/types";
+import { ApiUser, User } from "../utils/types";
 import axios, { AxiosError } from "axios";
 import {
-  convertUserRepoToCammelCase,
+  // convertUserRepoToCammelCase,
   convertUserToCammelCase,
 } from "../utils/cammelCaseConverter";
 
@@ -29,22 +29,9 @@ export const useUserList = (username?: string) => {
         params: params,
       });
 
-      const reposUrlList: any[] = [];
-
       const userList: User[] = [];
       response?.data?.items?.forEach((user: ApiUser) => {
         userList.push(convertUserToCammelCase(user));
-        reposUrlList.push(axios.get(user.repos_url));
-      });
-
-      const repoResponse = await axios.all(reposUrlList);
-
-      repoResponse.forEach((res) => {
-        const user = userList.find((user) => user.reposUrl === res.config.url);
-        if (user)
-          user.reposList = res.data.map((repo: ApiUserRepo) => {
-            return convertUserRepoToCammelCase(repo);
-          });
       });
 
       const returnData: {

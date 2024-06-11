@@ -7,7 +7,12 @@ import { UserList } from "./components/UserList/UserList";
 
 const App = () => {
   const [username, setUsername] = useState("");
-  const { data, isLoading, isError, isFetching } = useUserList(username);
+  const {
+    data: userListData,
+    isLoading,
+    isError,
+    isFetching,
+  } = useUserList(username);
   const usernameRef = useRef<HTMLInputElement>(null);
   const toast = useToast();
 
@@ -40,7 +45,7 @@ const App = () => {
         flexDirection={"column"}
         p={"4"}
         bg={"gray.50"}
-        w={{ base: "80", md: "96", "2xl": "2xl" }}
+        w={{ base: "80", md: "md", xl: "xl", "2xl": "2xl" }}
       >
         <Input
           placeholder="Enter username"
@@ -51,10 +56,11 @@ const App = () => {
           bg={"blue.300"}
           textColor={"gray.50"}
           onClick={handleUsernameSearch}
+          _hover={{ bg: "blue.400" }}
         >
           Search
         </Button>
-        <UserListContextProvider value={data?.userList || []}>
+        <UserListContextProvider value={userListData?.userList || []}>
           <UserList isLoading={isLoading || isFetching} />
         </UserListContextProvider>
       </Box>
