@@ -45,7 +45,8 @@ const App = () => {
         flexDirection={"column"}
         p={"4"}
         bg={"gray.50"}
-        w={{ base: "80", md: "md", xl: "xl", "2xl": "2xl" }}
+        w={{ base: "80", md: "md" }}
+        h={"80vh"}
       >
         <Input
           placeholder="Enter username"

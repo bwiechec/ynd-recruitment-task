@@ -27,6 +27,8 @@ export const UserList = ({ isLoading }: UserListProps) => {
       gap={"2"}
       display={"flex"}
       flexDirection={"column"}
+      overflowY={"auto"}
+      h={"60vh"}
     >
       {users.map((user) => (
         <UserItem key={user.login} user={user} />
