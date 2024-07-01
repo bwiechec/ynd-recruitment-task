@@ -1,4 +1,4 @@
-import { Box, Flex, Link, Text } from "@chakra-ui/react";
+import { Flex, Link, Text } from "@chakra-ui/react";
 import { UserRepo } from "../../utils/types";
 import { FaStar } from "react-icons/fa6";
 
